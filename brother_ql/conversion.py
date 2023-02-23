@@ -9,7 +9,7 @@ from PIL import Image
 import PIL.ImageOps, PIL.ImageChops
 
 from brother_ql.raster import BrotherQLRaster
-from brother_ql.devicedependent import ENDLESS_LABEL, DIE_CUT_LABEL, ROUND_DIE_CUT_LABEL, PTOUCH_ENDLESS_LABEL
+from brother_ql.devicedependent import ENDLESS_LABEL, DIE_CUT_LABEL, ROUND_DIE_CUT_LABEL, PTOUCH_ENDLESS_LABEL, COMPRESSION_REQUIRED
 from brother_ql.devicedependent import label_type_specs, right_margin_addition
 from brother_ql import BrotherQLUnsupportedCmd
 from brother_ql.image_trafos import filtered_hsv
@@ -187,7 +187,7 @@ def convert(qlr, images, label,  **kwargs):
             pass
         qlr.add_margins(label_specs['feed_margin'])
         try:
-            if compress: qlr.add_compression(True)
+            if compress or COMPRESSION_REQUIRED: qlr.add_compression(True)
         except BrotherQLUnsupportedCmd:
             pass
         if red:

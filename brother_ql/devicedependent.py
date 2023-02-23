@@ -35,6 +35,7 @@ cuttingsupport = []
 expandedmode = []
 compressionsupport = []
 two_color_support = []
+COMPRESSION_REQUIRED = []
 
 ## Let's recreate them using the improved data structures
 ## in brother_ql.models and brother_ql.labels
@@ -55,6 +56,7 @@ def _populate_model_legacy_structures():
         if model.cutting: cuttingsupport.append(model.identifier)
         if model.expanded_mode: expandedmode.append(model.identifier)
         if model.compression: compressionsupport.append(model.identifier)
+        if model.compressionrequired: COMPRESSION_REQUIRED.append(model.identifier)
         if model.two_color: two_color_support.append(model.identifier)
 
 def _populate_label_legacy_structures():
